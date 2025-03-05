@@ -25,9 +25,13 @@ export enum RewardAdPluginEvents {
    * 2. The user start the video and see it until end, then gets the reward
    * and after that the ad is closed.
    */
-  Dismissed= 'onRewardedVideoAdDismissed',
+  Dismissed = 'onRewardedVideoAdDismissed',
   /**
    * Emits when user get rewarded from AdReward
    */
-  Rewarded= 'onRewardedVideoAdReward',
+  Rewarded = 'onRewardedVideoAdReward',
+  /**
+   * Emits when user click on the AdReward
+   */
+  RewardedAdClicked = 'onRewardedInterstitialAdClicked',
 }

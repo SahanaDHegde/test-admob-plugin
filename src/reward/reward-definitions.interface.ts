@@ -46,18 +46,17 @@ export interface RewardDefinitions {
     listenerFunc: (reward: AdMobRewardItem) => void,
   ): Promise<PluginListenerHandle>;
 
-  addListener(
-    eventName: RewardAdPluginEvents.Dismissed,
-    listenerFunc: () => void,
-  ): Promise<PluginListenerHandle>;
+  addListener(eventName: RewardAdPluginEvents.Dismissed, listenerFunc: () => void): Promise<PluginListenerHandle>;
 
   addListener(
     eventName: RewardAdPluginEvents.FailedToShow,
     listenerFunc: (error: AdMobError) => void,
   ): Promise<PluginListenerHandle>;
 
+  addListener(eventName: RewardAdPluginEvents.Showed, listenerFunc: () => void): Promise<PluginListenerHandle>;
+
   addListener(
-    eventName: RewardAdPluginEvents.Showed,
+    eventName: RewardAdPluginEvents.RewardedAdClicked,
     listenerFunc: () => void,
   ): Promise<PluginListenerHandle>;
 }
