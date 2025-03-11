@@ -353,6 +353,7 @@ AdMob.addListener(RewardAdPluginEvents.Rewarded, async () => {
 * [`addListener(RewardAdPluginEvents.Dismissed, ...)`](#addlistenerrewardadplugineventsdismissed-)
 * [`addListener(RewardAdPluginEvents.FailedToShow, ...)`](#addlistenerrewardadplugineventsfailedtoshow-)
 * [`addListener(RewardAdPluginEvents.Showed, ...)`](#addlistenerrewardadplugineventsshowed-)
+* [`addListener(RewardAdPluginEvents.RewardedAdClicked, ...)`](#addlistenerrewardadplugineventsrewardedadclicked-)
 * [`prepareRewardInterstitialAd(...)`](#preparerewardinterstitialad)
 * [`showRewardInterstitialAd()`](#showrewardinterstitialad)
 * [`addListener(RewardInterstitialAdPluginEvents.FailedToLoad, ...)`](#addlistenerrewardinterstitialadplugineventsfailedtoload-)
@@ -915,6 +916,22 @@ addListener(eventName: RewardAdPluginEvents.Showed, listenerFunc: () => void) =>
 --------------------
 
 
+### addListener(RewardAdPluginEvents.RewardedAdClicked, ...)
+
+```typescript
+addListener(eventName: RewardAdPluginEvents.RewardedAdClicked, listenerFunc: () => void) => Promise<PluginListenerHandle>
+```
+
+| Param              | Type                                                                                    |
+| ------------------ | --------------------------------------------------------------------------------------- |
+| **`eventName`**    | <code><a href="#rewardadpluginevents">RewardAdPluginEvents.RewardedAdClicked</a></code> |
+| **`listenerFunc`** | <code>() =&gt; void</code>                                                              |
+
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt;</code>
+
+--------------------
+
+
 ### prepareRewardInterstitialAd(...)
 
 ```typescript
@@ -1282,14 +1299,15 @@ From T, pick a set of properties whose keys are in the union K
 
 #### RewardAdPluginEvents
 
-| Members            | Value                                        | Description                                                                                                                                                                                                                                                                                                                                            |
-| ------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **`Loaded`**       | <code>'onRewardedVideoAdLoaded'</code>       | Emits after trying to prepare a RewardAd and the Video is loaded and ready to be show                                                                                                                                                                                                                                                                  |
-| **`FailedToLoad`** | <code>'onRewardedVideoAdFailedToLoad'</code> | Emits after trying to prepare a RewardAd when it could not be loaded                                                                                                                                                                                                                                                                                   |
-| **`Showed`**       | <code>'onRewardedVideoAdShowed'</code>       | Emits when the AdReward video is visible to the user                                                                                                                                                                                                                                                                                                   |
-| **`FailedToShow`** | <code>'onRewardedVideoAdFailedToShow'</code> | Emits when the AdReward video is failed to show                                                                                                                                                                                                                                                                                                        |
-| **`Dismissed`**    | <code>'onRewardedVideoAdDismissed'</code>    | Emits when the AdReward video is not visible to the user anymore. **Important**: This has nothing to do with the reward it self. This event will emits in this two cases: 1. The user starts the video ad but close it before the reward emit. 2. The user start the video and see it until end, then gets the reward and after that the ad is closed. |
-| **`Rewarded`**     | <code>'onRewardedVideoAdReward'</code>       | Emits when user get rewarded from AdReward                                                                                                                                                                                                                                                                                                             |
+| Members                 | Value                                        | Description                                                                                                                                                                                                                                                                                                                                            |
+| ----------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **`Loaded`**            | <code>'onRewardedVideoAdLoaded'</code>       | Emits after trying to prepare a RewardAd and the Video is loaded and ready to be show                                                                                                                                                                                                                                                                  |
+| **`FailedToLoad`**      | <code>'onRewardedVideoAdFailedToLoad'</code> | Emits after trying to prepare a RewardAd when it could not be loaded                                                                                                                                                                                                                                                                                   |
+| **`Showed`**            | <code>'onRewardedVideoAdShowed'</code>       | Emits when the AdReward video is visible to the user                                                                                                                                                                                                                                                                                                   |
+| **`FailedToShow`**      | <code>'onRewardedVideoAdFailedToShow'</code> | Emits when the AdReward video is failed to show                                                                                                                                                                                                                                                                                                        |
+| **`Dismissed`**         | <code>'onRewardedVideoAdDismissed'</code>    | Emits when the AdReward video is not visible to the user anymore. **Important**: This has nothing to do with the reward it self. This event will emits in this two cases: 1. The user starts the video ad but close it before the reward emit. 2. The user start the video and see it until end, then gets the reward and after that the ad is closed. |
+| **`Rewarded`**          | <code>'onRewardedVideoAdReward'</code>       | Emits when user get rewarded from AdReward                                                                                                                                                                                                                                                                                                             |
+| **`RewardedAdClicked`** | <code>'onRewardedAdClicked'</code>           | Emits when user click on the AdReward                                                                                                                                                                                                                                                                                                                  |
 
 
 #### RewardInterstitialAdPluginEvents
