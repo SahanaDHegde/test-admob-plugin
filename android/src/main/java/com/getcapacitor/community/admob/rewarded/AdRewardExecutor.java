@@ -65,21 +65,21 @@ public class AdRewardExecutor extends Executor {
             activitySupplier
                 .get()
                 .runOnUiThread(() -> {
-                    mRewardedAd.setFullScreenContentCallback(
-                        new FullScreenContentCallback() {
-                            @Override
-                            public void onAdClicked() {
-                                JSObject event = new JSObject();
-                                event.put("event", "onAdClicked");
-                                System.out.println(
-                                    "Before sending event to JS juego click test: " + RewardAdPluginEvents.INSTANCE.getRewardedAdClicked()
-                                );
+                    // mRewardedAd.setFullScreenContentCallback(
+                    //     new FullScreenContentCallback() {
+                    //         @Override
+                    //         public void onAdClicked() {
+                    //             JSObject event = new JSObject();
+                    //             event.put("event", "onAdClicked");
+                    //             System.out.println(
+                    //                 "Before sending event to JS juego click test: " + RewardAdPluginEvents.INSTANCE.getRewardedAdClicked()
+                    //             );
 
-                                System.out.println("Rewarded Ad Touched: juego test user click test");
-                                notifyListenersFunction.accept("onRewardedAdClicked", event);
-                            }
-                        }
-                    );
+                    //             System.out.println("Rewarded Ad Touched: juego test user click test");
+                    //             notifyListenersFunction.accept("onRewardedAdClicked", event);
+                    //         }
+                    //     }
+                    // );
                     mRewardedAd.show(
                         activitySupplier.get(),
                         RewardedAdCallbackAndListeners.INSTANCE.getOnUserEarnedRewardListener(call, notifyListenersFunction)
