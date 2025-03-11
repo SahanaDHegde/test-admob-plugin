@@ -33,5 +33,5 @@ export enum RewardAdPluginEvents {
   /**
    * Emits when user click on the AdReward
    */
-  RewardedAdClicked = 'onRewardedInterstitialAdClicked',
+  RewardedAdClicked = 'onRewardedAdClicked',
 }

@@ -12,6 +12,7 @@ import com.getcapacitor.community.admob.models.AdMobPluginError;
 import com.getcapacitor.community.admob.models.AdOptions;
 import com.getcapacitor.community.admob.models.Executor;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.common.util.BiConsumer;
 
@@ -64,6 +65,21 @@ public class AdRewardExecutor extends Executor {
             activitySupplier
                 .get()
                 .runOnUiThread(() -> {
+                    mRewardedAd.setFullScreenContentCallback(
+                        new FullScreenContentCallback() {
+                            @Override
+                            public void onAdClicked() {
+                                JSObject event = new JSObject();
+                                event.put("event", "onAdClicked");
+                                System.out.println(
+                                    "Before sending event to JS juego click test: " + RewardAdPluginEvents.INSTANCE.getRewardedAdClicked()
+                                );
+
+                                System.out.println("Rewarded Ad Touched: juego test user click test");
+                                notifyListenersFunction.accept("onRewardedAdClicked", event);
+                            }
+                        }
+                    );
                     mRewardedAd.show(
                         activitySupplier.get(),
                         RewardedAdCallbackAndListeners.INSTANCE.getOnUserEarnedRewardListener(call, notifyListenersFunction)
